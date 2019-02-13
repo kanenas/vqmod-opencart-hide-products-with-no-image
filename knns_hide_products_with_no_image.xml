@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification
+	xmlns="https://github.com/vqmod/vqmod"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://github.com/vqmod/vqmod https://raw.githubusercontent.com/vqmod/vqmod/master/vqmod.xsd"
+	>
+	<id><![CDATA[[VQMOD] Hide products with no image >> Category, Manufacturer, Search & Special ]]></id>
+	<version>0.1.0</version>
+	<vqmver>2.6.3</vqmver>
+	<author>kanenas.net (aka Nikolas Branis) - nbran@kanenas.net</author>
+	<file path="catalog/controller/product/" name="category.php,manufacturer.php,search.php,special.php" error="log">
+		<operation error="skip">
+			<search position="before"><![CDATA[$image = $this->model_tool_image->resize('placeholder.png', $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));]]></search>
+			<add><![CDATA[
+					// kanenas: knns_hide_products_with_no_image.xml (start) <<
+					continue;
+					// kanenas: knns_hide_products_with_no_image.xml (end) <<
+			]]></add>
+		</operation>
+	</file>
+</modification>
