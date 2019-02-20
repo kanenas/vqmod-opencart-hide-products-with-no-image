@@ -4,7 +4,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="https://github.com/vqmod/vqmod https://raw.githubusercontent.com/vqmod/vqmod/master/vqmod.xsd"
 	>
-	<id><![CDATA[[VQMOD] Hide products with no image >> Category, Manufacturer, Search & Special ]]></id>
+	<id><![CDATA[[VQMOD] Hide products with no image >> Category, Manufacturer, Search & Special]]></id>
 	<version>0.1.0</version>
 	<vqmver>2.6.3</vqmver>
 	<author>kanenas.net (aka Nikolas Branis) - nbran@kanenas.net</author>
