@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification
+	xmlns="https://github.com/vqmod/vqmod"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://github.com/vqmod/vqmod https://raw.githubusercontent.com/vqmod/vqmod/master/vqmod.xsd"
+	>
+	<id><![CDATA[[VQMOD] Hide products with no image >> Category, Manufacturer, Search, Special, Journal2 Carousel, Journal2 Custom Section, Journal2 Side Products, Mega Filter PRO/PLUS, Same Category Products, Similar Products]]></id>
+	<version>0.1.0</version>
+	<vqmver>2.6.3</vqmver>
+	<author>kanenas.net (aka Nikolas Branis) - nbran@kanenas.net</author>
+	<file path="catalog/controller/module/" name="latest.php" error="log">
+		<operation error="skip">
+			<search position="before"><![CDATA[$image = $this->model_tool_image->resize('placeholder.png', $setting['width'], $setting['height']);]]></search>
+			<add><![CDATA[
+					// kanenas: knns_hide_products_with_no_image.xml (start) <<
+					continue;
+					// kanenas: knns_hide_products_with_no_image.xml (end) <<
+			]]></add>
+		</operation>
+	</file>
+	<file path="catalog/controller/module/" name="journal2_carousel.php,journal2_custom_sections.php,journal2_side_products.php" error="log">
+		<operation error="skip">
+			<search position="replace"><![CDATA[$image = Journal2Utils::resizeImage($this->model_tool_image, $product['image'] ? $product['image'] : 'data/journal2/no_image_large.jpg', $this->data['image_width'], $this->data['image_height'], $this->data['image_resize_type']);]]></search>
+			<add><![CDATA[
+                // kanenas: knns_hide_products_with_no_image.xml (start) <<
+                if ($product['image']) {
+                    $image = Journal2Utils::resizeImage($this->model_tool_image, $product['image'], $this->data['image_width'], $this->data['image_height'], $this->data['image_resize_type']);
+                } else {
+                    continue;
+                    $image = Journal2Utils::resizeImage($this->model_tool_image, 'data/journal2/no_image_large.jpg', $this->data['image_width'], $this->data['image_height'], $this->data['image_resize_type']);
+                }
+                // kanenas: knns_hide_products_with_no_image.xml (end) <<
+			]]></add>
+		</operation>
+	</file>
+	<file path="catalog/controller/module/" name="mega_filter.php" error="log">
+		<operation error="skip">
+			<search position="before" index="2"><![CDATA[$image = false;]]></search>
+			<add><![CDATA[
+					// kanenas: knns_hide_products_with_no_image.xml (start) <<
+					continue;
+					// kanenas: knns_hide_products_with_no_image.xml (end) <<
+			]]></add>
+		</operation>
+	</file>
+	<file path="catalog/controller/module/" name="product_same_category.php" error="log">
+		<operation error="skip">
+			<search position="before"><![CDATA[$image = $this->model_tool_image->resize('placeholder.png', $setting['image_width'], $setting['image_height']);]]></search>
+			<add><![CDATA[
+				// kanenas: knns_hide_products_with_no_image.xml (start) <<
+				continue;
+				// kanenas: knns_hide_products_with_no_image.xml (end) <<
+			]]></add>
+		</operation>
+	</file>
+	<file path="catalog/controller/module/" name="similar_products.php" error="log">
+		<operation error="skip">
+			<search position="before"><![CDATA[$image = $this->model_tool_image->resize('placeholder.png', $settings['image_width'], $settings['image_height']);]]></search>
+			<add><![CDATA[
+				// kanenas: knns_hide_products_with_no_image.xml (start) <<
+				continue;
+				// kanenas: knns_hide_products_with_no_image.xml (end) <<
+			]]></add>
+		</operation>
+	</file>
+	<file path="catalog/controller/product/" name="category.php,manufacturer.php,search.php,special.php" error="log">
+		<operation error="skip">
+			<search position="before"><![CDATA[$image = $this->model_tool_image->resize('placeholder.png', $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));]]></search>
+			<add><![CDATA[
+					// kanenas: knns_hide_products_with_no_image.xml (start) <<
+					continue;
+					// kanenas: knns_hide_products_with_no_image.xml (end) <<
+			]]></add>
+		</operation>
+	</file>
+</modification>
