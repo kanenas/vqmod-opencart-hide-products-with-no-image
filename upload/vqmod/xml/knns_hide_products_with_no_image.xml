@@ -11,7 +11,13 @@
 	<file path="catalog/model/catalog/" name="product.php" error="log">
 		<operation error="skip">
 			<search position="replace"><![CDATA[WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.status = '1']]></search>
-			<add><![CDATA[WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.status = '1' AND p.image IS NOT NULL ]]></add>
+			<add><![CDATA[WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.status = '1' AND p.image <> '']]></add>
+		</operation>
+	</file>
+	<file path="catalog/model/journal3/" name="filter.php" error="log">
+		<operation error="skip">
+			<search position="after"><![CDATA[p.status = '1' ]]></search>
+			<add><![CDATA[				AND p.image <> '' ]]></add>
 		</operation>
 	</file>
 </modification>
