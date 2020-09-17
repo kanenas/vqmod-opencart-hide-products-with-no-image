@@ -5,13 +5,17 @@
 	xsi:schemaLocation="https://github.com/vqmod/vqmod https://raw.githubusercontent.com/vqmod/vqmod/master/vqmod.xsd"
 	>
 	<id><![CDATA[[VQMOD] Hide products with no image from all lists]]></id>
-	<version>1.0.0</version>
+	<version>1.1.0</version>
 	<vqmver>2.6.3</vqmver>
 	<author>kanenas.net (aka Nikolas Branis) - nbran@kanenas.net</author>
 	<file path="catalog/model/catalog/" name="product.php" error="log">
 		<operation error="skip">
 			<search position="replace"><![CDATA[WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.status = '1']]></search>
 			<add><![CDATA[WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.status = '1' AND p.image IS NOT NULL ]]></add>
+		</operation>
+		<operation error="skip">
+			<search position="replace"><![CDATA[WHERE p.status = '1' AND]]></search>
+			<add><![CDATA[WHERE p.status = '1' AND p.image IS NOT NULL AND ]]></add>
 		</operation>
 	</file>
 </modification>
