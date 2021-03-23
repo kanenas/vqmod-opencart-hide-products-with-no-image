@@ -18,4 +18,16 @@
 			<add><![CDATA[WHERE p.status = '1' AND p.image IS NOT NULL AND ]]></add>
 		</operation>
 	</file>
+	<!-- Journal v2.x (start) -->
+	<file path="catalog/model/journal2/" name="product.php" error="log">
+		<operation error="skip">
+			<search position="replace"><![CDATA[p.status = '1']]></search>
+			<add><![CDATA[p.status = '1' AND p.image <> '']]></add>
+		</operation>
+		<operation error="skip">
+			<search position="replace"><![CDATA[p.status = "1"]]></search>
+			<add><![CDATA[p.status = "1" AND p.image <> ""]]></add>
+		</operation>
+	</file>
+	<!-- Journal v2.x (end) -->
 </modification>
